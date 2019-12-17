@@ -1,0 +1,292 @@
+{
+  "version": 1,
+  "projects": {
+    "pet-adoption-system": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/pet-adoption-system",
+      "sourceRoot": "apps/pet-adoption-system/src",
+      "prefix": "pet-adoption-system",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/pet-adoption-system",
+            "index": "apps/pet-adoption-system/src/index.html",
+            "main": "apps/pet-adoption-system/src/main.ts",
+            "polyfills": "apps/pet-adoption-system/src/polyfills.ts",
+            "tsConfig": "apps/pet-adoption-system/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/pet-adoption-system/src/favicon.ico",
+              "apps/pet-adoption-system/src/assets"
+            ],
+            "styles": ["apps/pet-adoption-system/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/pet-adoption-system/src/environments/environment.ts",
+                  "with": "apps/pet-adoption-system/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "pet-adoption-system:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "pet-adoption-system:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "pet-adoption-system:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/pet-adoption-system/tsconfig.app.json",
+              "apps/pet-adoption-system/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/pet-adoption-system/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/pet-adoption-system/jest.config.js",
+            "tsConfig": "apps/pet-adoption-system/tsconfig.spec.json",
+            "setupFile": "apps/pet-adoption-system/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "pet-adoption-system-e2e": {
+      "root": "apps/pet-adoption-system-e2e",
+      "sourceRoot": "apps/pet-adoption-system-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/pet-adoption-system-e2e/cypress.json",
+            "tsConfig": "apps/pet-adoption-system-e2e/tsconfig.e2e.json",
+            "devServerTarget": "pet-adoption-system:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pet-adoption-system:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/pet-adoption-system-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/pet-adoption-system-e2e/**"
+            ]
+          }
+        }
+      }
+    },
+    "adoption-ui": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/adoption-ui",
+      "sourceRoot": "apps/adoption-ui/src",
+      "prefix": "pet-adoption-system",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/adoption-ui",
+            "index": "apps/adoption-ui/src/index.html",
+            "main": "apps/adoption-ui/src/main.ts",
+            "polyfills": "apps/adoption-ui/src/polyfills.ts",
+            "tsConfig": "apps/adoption-ui/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/adoption-ui/src/favicon.ico",
+              "apps/adoption-ui/src/assets"
+            ],
+            "styles": ["apps/adoption-ui/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/adoption-ui/src/environments/environment.ts",
+                  "with": "apps/adoption-ui/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "adoption-ui:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "adoption-ui:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "adoption-ui:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/adoption-ui/tsconfig.app.json",
+              "apps/adoption-ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/adoption-ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/adoption-ui/jest.config.js",
+            "tsConfig": "apps/adoption-ui/tsconfig.spec.json",
+            "setupFile": "apps/adoption-ui/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "adoption-ui-e2e": {
+      "root": "apps/adoption-ui-e2e",
+      "sourceRoot": "apps/adoption-ui-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/adoption-ui-e2e/cypress.json",
+            "tsConfig": "apps/adoption-ui-e2e/tsconfig.e2e.json",
+            "devServerTarget": "adoption-ui:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "adoption-ui:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/adoption-ui-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/adoption-ui-e2e/**"]
+          }
+        }
+      }
+    },
+    "auth-adoption": {
+      "root": "libs/auth-adoption",
+      "sourceRoot": "libs/auth-adoption/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/auth-adoption/tsconfig.lib.json",
+              "libs/auth-adoption/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/auth-adoption/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/auth-adoption/jest.config.js",
+            "tsConfig": "libs/auth-adoption/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "pet-adoption-system"
+}
